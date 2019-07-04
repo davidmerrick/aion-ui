@@ -1,0 +1,19 @@
+branches:
+  only:
+  - master
+language: node_js
+node_js:
+- 9.10.0
+before_install:
+- sudo apt-get update
+- sudo apt-get install -y python3 python3-pip
+- pip3 install awscli --upgrade --user
+install:
+- npm install
+script:
+- npm run-script build
+- npm run-script deploy
+env:
+  global:
+  - secure: m4fq47HpokRPLE5vC4q2BuH24rnXhX+tsUJRp8rQdskJ4kwhxJHOITZZKqo7laZf2B/jBRHPLy6wH9ZZpqPUT89wx6JnDioxghYC6XUyogIfZEFznaHvynVUHb41IHesXpS7XX7pKUgpIm8vi+/rbieWFCAITx0mH/RcwvfuP/4tpH/I5QPGPaGrj6WibIlGBS211bd6rpxfS+iz6xVPv5+Cww+ve5NjASr+/vSDoTGd87sS2sUw0iamB85cFWiMy+4e7OeudpR4cAt9pniOUISsSlyOGbHBC/2AE/6sXPyfj50KonvWPQNdu3aA5KPLLVusqH0vIhr+qUzWTzvGbU6Xjn09mZLPSZfY1CRHjWoXxRZxgstdWbZXPkxfxeKpAUV+jDDAxPGKrPh3kwgoW1kpbK7rNEOeJpQCKM7B9Eyv835JOmdiSlPxFKSnOgUQXByd/XS1IoPYOC6tGYgVo54CRRuMXVC4T0sgLfD3J6NnrAuYmiLJMEeh77TTV8UpNQ5lZbyX+G51C1Dn5w5x8KvTXoIEhfMUXgAJWC6mdysBqc0SLBz7nydhJ422sXleNCAJeZ6unSBW1de8nLecEha7BwVQ+U+i9D7e8si20aa2+Pz/DBgANbgbY7GaJzgVfDh9/LsIWhXtP6i+UGAaWlRLSk7sc9YHEkdnObs/BSc=
+  - secure: oXQNeM0+bQTggwqG26kKDY/VvrW5PPF7VgY3T6+svOUm9toOQ2pw5SPsdGaq1maAMiXUd4bVTrjy7L07Qf+ZqxucowZpF9i0r/1et4yf9geA7pBaq+RdGA9j/LqQUgFmaFs9FYWT/hoFH1F4rR9PkaYAmEIELTvtZ+gHdUw+i9mAvhvmZWX49W7H6rRYZ2lh5SKxILvvJgyV2/usRoFk8Y1Vi58AcjGA011BUXhy48wlFeEOIa1QWoAsXt1cE2u6xGquwjpvBWCC/T81cQ2uRvatnrMqRs0iLR8KXOgALoepgR4MX8U9Nsm2QW85F97BzCUAx0X4IUDgmQIrVpjSUPDSbAY18Sq0jXhzxFXBiGWOjKTUldm5y4F9fwSNw1u3T2w3OPm8Dwhxn1jWoeGjvHUdJCkkSjqtZlN3d1I4+wMoU6V3+3WzpL/RxlQARGxHEMgU9dzKQyGP09ODPmBF/Up26+C7V6373VtNopzKc/3o9jwnqz1Zv+3/X8lyBOGl+iNSLNwXDuvTAVHJ0an/00jHl8gVILV62WNWidB6UfVC8hEdmLvblMQc4BzroqEhGJBIVDIqKfIM/PepoIiNbiUo61gPBa04BfT9oq7uApwMNlP2PzuvcRnn/wDwt3GiXii9dMpKoXT8bqLVTb+HRzj92ExfoVF9rMcwEKnql0w=
