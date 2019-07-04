@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { Typography, AppBar, Toolbar, Grid } from "@material-ui/core";
+import { Typography, AppBar, Toolbar, FormControl, Input, InputLabel } from "@material-ui/core";
 
 function App() {
   return (
@@ -11,8 +11,11 @@ function App() {
               Aion: iCal filtering service
             </Typography>
           </Toolbar>
-          <Grid container spacing={24} justify="center"></Grid>
         </AppBar>
+        <FormControl>
+          <InputLabel htmlFor="my-input">Calendar URL</InputLabel>
+          <Input id="my-input" aria-describedby="my-helper-text" />
+        </FormControl>
     </div>
   );
 }
