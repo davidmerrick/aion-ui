@@ -8,3 +8,13 @@ export const updateCalendarUrl = newUrl => dispatch => {
     }
   });
 };
+
+export const submitCalendar = () => dispatch => {
+  // Todo: Do POST request to Aion here
+  new Promise((resolve, reject) => {
+    dispatch({ type: types.CALENDAR_LOADING });
+    setTimeout(() => resolve(), 3000);
+  }).then(() => {
+    dispatch({ type: types.CALENDAR_LOADING_COMPLETED });
+  });
+};

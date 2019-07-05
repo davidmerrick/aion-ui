@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import { Typography, AppBar, Toolbar } from "@material-ui/core";
+import { Typography, AppBar, Toolbar, Grid } from "@material-ui/core";
 import CalendarForm from "./components/CalendarForm";
 
 function App() {
@@ -13,7 +13,9 @@ function App() {
           </Typography>
         </Toolbar>
       </AppBar>
-      <CalendarForm />
+      <Grid container justify="center">
+        <CalendarForm />
+      </Grid>
     </div>
   );
 }
