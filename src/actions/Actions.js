@@ -1,4 +1,5 @@
 import * as types from "./ActionTypes";
+import { createCalendar } from "../external/AionApi";
 
 export const updateCalendarUrl = newUrl => dispatch => {
   dispatch({
@@ -9,12 +10,18 @@ export const updateCalendarUrl = newUrl => dispatch => {
   });
 };
 
-export const submitCalendar = () => dispatch => {
-  // Todo: Do POST request to Aion here
+export const submitCalendar = calendarUrl => dispatch => {
   new Promise((resolve, reject) => {
     dispatch({ type: types.CALENDAR_LOADING });
-    setTimeout(() => resolve(), 3000);
-  }).then(() => {
-    dispatch({ type: types.CALENDAR_LOADING_COMPLETED });
-  });
+    return resolve();
+  })
+    .then(() => {
+      return createCalendar({
+        url: calendarUrl
+      });
+    })
+    .then(() => {
+      // Todo: Store the response from Aion in the calendar reducer
+      dispatch({ type: types.CALENDAR_LOADING_COMPLETED });
+    });
 };
