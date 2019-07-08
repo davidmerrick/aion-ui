@@ -14,7 +14,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   updateCalendarUrl: newUrl => dispatch(updateCalendarUrl(newUrl)),
-  submitCalendar: () => dispatch(submitCalendar())
+  submitCalendar: url => dispatch(submitCalendar(url))
 });
 
 class CalendarForm extends Component {
@@ -29,7 +29,7 @@ class CalendarForm extends Component {
   }
 
   handleSubmit(e) {
-    this.props.submitCalendar();
+    this.props.submitCalendar(this.props.calendarReducer.url);
   }
 
   render() {
