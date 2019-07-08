@@ -2,6 +2,7 @@ import React from "react";
 import "./App.css";
 import { Typography, AppBar, Toolbar, Grid } from "@material-ui/core";
 import CalendarForm from "./components/CalendarForm";
+import FilterForm from "./components/FilterForm";
 
 function App() {
   return (
@@ -14,7 +15,12 @@ function App() {
         </Toolbar>
       </AppBar>
       <Grid container justify="center">
-        <CalendarForm />
+        <Grid item xs={8}>
+          <CalendarForm />
+        </Grid>
+        <Grid item xs={8}>
+          <FilterForm />
+        </Grid>
       </Grid>
     </div>
   );

@@ -3,7 +3,9 @@ import {
   FormGroup,
   TextField,
   Button,
-  CircularProgress
+  CircularProgress,
+  Paper,
+  Typography
 } from "@material-ui/core";
 import { connect } from "react-redux";
 import { updateCalendarUrl, submitCalendar } from "../actions/Actions";
@@ -32,13 +34,9 @@ class CalendarForm extends Component {
     this.props.submitCalendar(this.props.calendarReducer.url);
   }
 
-  render() {
+  getBody() {
     if (this.props.calendarReducer.isLoading) {
-      return (
-        <div>
-          <CircularProgress />
-        </div>
-      );
+      return <CircularProgress />;
     } else {
       return (
         <div>
@@ -56,6 +54,17 @@ class CalendarForm extends Component {
         </div>
       );
     }
+  }
+
+  render() {
+    return (
+      <Paper>
+        <Typography variant="h5" component="h2">
+          Add a calendar
+        </Typography>
+        {this.getBody()}
+      </Paper>
+    );
   }
 }
 

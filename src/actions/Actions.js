@@ -20,8 +20,12 @@ export const submitCalendar = calendarUrl => dispatch => {
         url: calendarUrl
       });
     })
-    .then(() => {
-      // Todo: Store the response from Aion in the calendar reducer
-      dispatch({ type: types.CALENDAR_LOADING_COMPLETED });
+    .then(created => {
+      dispatch({
+        type: types.CALENDAR_LOADING_COMPLETED,
+        payload: {
+          aionResource: created.url
+        }
+      });
     });
 };
