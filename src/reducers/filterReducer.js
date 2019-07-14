@@ -2,6 +2,7 @@ import * as types from "../actions/ActionTypes";
 
 const initialState = {
   summaryInclude: [{ key: 0, label: "foo" }],
+  filterId: null,
   rsvpAttending: false,
   rsvpTentative: false,
   rsvpNeedsAction: false,

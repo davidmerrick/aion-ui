@@ -2,10 +2,11 @@ import * as types from "../actions/ActionTypes";
 
 const initialState = {
   url: "",
-  aionResource: "",
+  aionCalendarId: null,
   isLoading: false
 };
 
+// Todo: Maybe change this to "calendarFormReducer"
 const calendarReducer = (state = initialState, action) => {
   switch (action.type) {
     case types.UPDATE_CALENDAR_URL:

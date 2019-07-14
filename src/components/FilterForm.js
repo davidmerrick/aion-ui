@@ -17,8 +17,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   updateRsvpAttending: value => dispatch(updateRsvpAttending(value)),
-  submitForm: (filterReducer, calendarReducer) =>
-    dispatch(submitForm(filterReducer, calendarReducer))
+  submitForm: (calendarReducer, filterReducer) =>
+    dispatch(submitForm(calendarReducer, filterReducer))
 });
 
 const styles = theme => ({
@@ -40,7 +40,7 @@ class FilterForm extends Component {
   }
 
   handleSubmit(e) {
-    this.props.submitForm(this.props.filterReducer, this.props.calendarReducer);
+    this.props.submitForm(this.props.calendarReducer, this.props.filterReducer);
   }
 
   handleDelete(chipToDelete) {
