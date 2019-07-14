@@ -1,4 +1,4 @@
-import { AION_URL, CALENDAR_PATH } from "../Config";
+import { AION_URL, CALENDAR_PATH } from "../../Config";
 
 const AION_VND = "application/vnd.merricklabs.aion.v1+json";
 

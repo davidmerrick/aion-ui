@@ -1,5 +1,4 @@
 import * as types from "./ActionTypes";
-import { createCalendar } from "../external/AionApi";
 
 export const updateCalendarUrl = newUrl => dispatch => {
   dispatch({
@@ -10,22 +9,23 @@ export const updateCalendarUrl = newUrl => dispatch => {
   });
 };
 
-export const submitCalendar = calendarUrl => dispatch => {
+export const updateRsvpAttending = value => dispatch => {
+  dispatch({
+    type: types.UPDATE_RSVP_ATTENDING,
+    payload: {
+      rsvpAttending: value
+    }
+  });
+};
+
+export const submitForm = (calendarReducer, filterReducer) => dispatch => {
   new Promise((resolve, reject) => {
-    dispatch({ type: types.CALENDAR_LOADING });
+    dispatch({ type: types.APP_LOADING });
     return resolve();
-  })
-    .then(() => {
-      return createCalendar({
-        url: calendarUrl
-      });
-    })
-    .then(created => {
-      dispatch({
-        type: types.CALENDAR_LOADING_COMPLETED,
-        payload: {
-          aionResource: created.url
-        }
-      });
-    });
+  }).then(() => {
+    // Todo: Submit calendar to Aion, submit filter, combine both ids to generate a calendar url
+    setTimeout(() => {
+      dispatch({ type: types.APP_LOADING_COMPLETED });
+    }, 3000);
+  });
 };

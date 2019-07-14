@@ -16,14 +16,6 @@ const calendarReducer = (state = initialState, action) => {
       return Object.assign({}, state, {
         aionResource: action.payload.aionResource
       });
-    case types.CALENDAR_LOADING:
-      return Object.assign({}, state, {
-        isLoading: true
-      });
-    case types.CALENDAR_LOADING_COMPLETED:
-      return Object.assign({}, state, {
-        isLoading: false
-      });
     default:
       return state;
   }

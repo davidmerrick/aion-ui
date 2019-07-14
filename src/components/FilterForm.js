@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import { withStyles } from "@material-ui/core/styles";
+import { updateRsvpAttending, submitForm } from "../actions/Actions";
 import {
   FormGroup,
-  TextField,
   Button,
-  Chip,
+  FormControlLabel,
+  Checkbox,
   Typography,
   Paper
 } from "@material-ui/core";
@@ -14,7 +15,11 @@ const mapStateToProps = state => ({
   ...state
 });
 
-const mapDispatchToProps = dispatch => ({});
+const mapDispatchToProps = dispatch => ({
+  updateRsvpAttending: value => dispatch(updateRsvpAttending(value)),
+  submitForm: (filterReducer, calendarReducer) =>
+    dispatch(submitForm(filterReducer, calendarReducer))
+});
 
 const styles = theme => ({
   root: {
@@ -31,34 +36,52 @@ class FilterForm extends Component {
   constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.updateRsvpAttending = this.updateRsvpAttending.bind(this);
   }
 
   handleSubmit(e) {
-    this.props.submitCalendar(this.props.calendarReducer.url);
+    this.props.submitForm(this.props.filterReducer, this.props.calendarReducer);
   }
 
   handleDelete(chipToDelete) {
     console.log(`Deleted ${chipToDelete.label}`);
   }
 
+  updateRsvpAttending() {
+    this.props.updateRsvpAttending(!this.props.filterReducer.rsvpAttending);
+  }
+
   getBody() {
-    return this.props.filterReducer.summaryInclude.map(item => {
-      return (
-        <Chip
-          key={item.key}
-          label={item.label}
-          onDelete={() => this.handleDelete(item)}
-          className={this.props.classes.chip}
-        />
-      );
-    });
+    return (
+      <div>
+        <FormGroup row>
+          <Typography variant="h6" component="h2">
+            Facebook event filter
+          </Typography>
+        </FormGroup>
+        <FormGroup row>
+          <FormControlLabel
+            control={
+              <Checkbox
+                checked={this.props.filterReducer.rsvpAttending}
+                onChange={() => this.updateRsvpAttending()}
+              />
+            }
+            label="Attending"
+          />
+        </FormGroup>
+        <FormGroup row>
+          <Button onClick={this.handleSubmit}>Submit</Button>
+        </FormGroup>
+      </div>
+    );
   }
 
   render() {
     return (
       <Paper>
         <Typography variant="h5" component="h2">
-          Create a filter
+          Filter
         </Typography>
         {this.getBody()}
       </Paper>
