@@ -5,11 +5,14 @@ import {
   AppBar,
   Toolbar,
   Grid,
-  CircularProgress
+  CircularProgress,
+  Paper,
+  Link
 } from "@material-ui/core";
 import CalendarForm from "./components/CalendarForm";
 import FilterForm from "./components/FilterForm";
 import { connect } from "react-redux";
+import { CALENDAR_PATH, AION_URL } from "./Config";
 
 const mapStateToProps = state => ({
   ...state
@@ -20,16 +23,31 @@ class App extends Component {
     if (this.props.appReducer.isLoading) {
       return <CircularProgress />;
     } else {
-      return (
-        <Grid container justify="center">
-          <Grid item xs={8}>
-            <CalendarForm />
+      if (
+        this.props.aionReducer.filterId &&
+        this.props.aionReducer.calendarId
+      ) {
+        let filterId = this.props.aionReducer.filterId;
+        let calendarId = this.props.aionReducer.calendarId;
+        let url = `${AION_URL}/${CALENDAR_PATH}/${calendarId}/apply/${filterId}`;
+        return (
+          <Paper>
+            Your filtered calendar can be found here:{" "}
+            <Link href={url}>{url}</Link>
+          </Paper>
+        );
+      } else {
+        return (
+          <Grid container justify="center">
+            <Grid item xs={8}>
+              <CalendarForm />
+            </Grid>
+            <Grid item xs={8}>
+              <FilterForm />
+            </Grid>
           </Grid>
-          <Grid item xs={8}>
-            <FilterForm />
-          </Grid>
-        </Grid>
-      );
+        );
+      }
     }
   }
 

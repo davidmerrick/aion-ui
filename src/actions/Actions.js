@@ -1,6 +1,7 @@
 import * as types from "./ActionTypes";
-import { createCalendar } from "../external/aion/AionApi";
+import { createCalendar, createFilter } from "../external/aion/AionApi";
 import AionCalendar from "../external/aion/models/AionCalendar";
+import AionFilter from "../external/aion/models/AionFilter";
 
 export const updateCalendarUrl = newUrl => dispatch => {
   dispatch({
@@ -43,6 +44,16 @@ export const submitForm = (calendarReducer, filterReducer) => dispatch => {
       dispatch({
         type: types.UPDATE_CALENDAR_ID,
         payload: { calendarId: created.id }
+      });
+    })
+    .then(() => {
+      let toCreate = new AionFilter(filterReducer);
+      return createFilter(toCreate);
+    })
+    .then(created => {
+      dispatch({
+        type: types.UPDATE_FILTER_ID,
+        payload: { filterId: created.id }
       });
     })
     .then(() => {

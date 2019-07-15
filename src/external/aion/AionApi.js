@@ -3,10 +3,10 @@ import { AION_URL, CALENDAR_PATH, FILTER_PATH } from "../../Config";
 const AION_VND = "application/vnd.merricklabs.aion.v1+json";
 
 export const createCalendar = calendar =>
-  createAionResource(`${AION_URL}${CALENDAR_PATH}`, calendar);
+  createAionResource(`${AION_URL}/${CALENDAR_PATH}`, calendar);
 
 export const createFilter = filter =>
-  createAionResource(`${AION_URL}${FILTER_PATH}`, filter);
+  createAionResource(`${AION_URL}/${FILTER_PATH}`, filter);
 
 const createAionResource = (url, payload) => {
   return fetch(url, {

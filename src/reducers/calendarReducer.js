@@ -2,7 +2,6 @@ import * as types from "../actions/ActionTypes";
 
 const initialState = {
   url: "",
-  aionCalendarId: null,
   isLoading: false
 };
 

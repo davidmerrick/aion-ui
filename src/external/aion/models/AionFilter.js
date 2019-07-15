@@ -1,7 +1,8 @@
 class AionFilter {
   constructor(filterReducer) {
-    if(filterReducer)
-    this.part_stat_filter = 
+    this.part_stat_filter = {
+      rsvp_status: filterReducer.partstatFilter
+    };
   }
 }
 

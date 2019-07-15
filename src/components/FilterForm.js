@@ -78,7 +78,7 @@ class FilterForm extends Component {
           </Typography>
         </FormGroup>
         {rsvpMap.map(item => (
-          <FormGroup row>
+          <FormGroup key={item.value} row>
             <FormControlLabel
               control={
                 <Checkbox
