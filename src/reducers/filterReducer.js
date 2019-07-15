@@ -3,10 +3,7 @@ import * as types from "../actions/ActionTypes";
 const initialState = {
   summaryInclude: [{ key: 0, label: "foo" }],
   filterId: null,
-  rsvpAttending: false,
-  rsvpTentative: false,
-  rsvpNeedsAction: false,
-  rsvpDeclined: false
+  partstatFilter: []
 };
 
 const filterReducer = (state = initialState, action) => {
@@ -15,9 +12,9 @@ const filterReducer = (state = initialState, action) => {
       return Object.assign({}, state, {
         summaryInclude: action.payload.summaryInclude
       });
-    case types.UPDATE_RSVP_ATTENDING:
+    case types.UPDATE_PARTSTAT_FILTER:
       return Object.assign({}, state, {
-        rsvpAttending: action.payload.rsvpAttending
+        partstatFilter: action.payload.partstatFilter
       });
     default:
       return state;

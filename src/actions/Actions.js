@@ -1,5 +1,6 @@
 import * as types from "./ActionTypes";
 import { createCalendar } from "../external/aion/AionApi";
+import AionCalendar from "../external/aion/models/AionCalendar";
 
 export const updateCalendarUrl = newUrl => dispatch => {
   dispatch({
@@ -10,20 +11,21 @@ export const updateCalendarUrl = newUrl => dispatch => {
   });
 };
 
-export const updateRsvpAttending = value => dispatch => {
+export const updateFilterId = value => dispatch => {
   dispatch({
-    type: types.UPDATE_RSVP_ATTENDING,
+    type: types.UPDATE_FILTER_ID,
     payload: {
-      rsvpAttending: value
+      filterId: value
     }
   });
 };
 
-export const updateFilterId = value => dispatch => {
+// Todo: Perhaps rename this to an "rsvp filter"
+export const updatePartstatFilter = partstatFilter => dispatch => {
   dispatch({
-    type: types.UPDATE_RSVP_ATTENDING,
+    type: types.UPDATE_PARTSTAT_FILTER,
     payload: {
-      filterId: value
+      partstatFilter: partstatFilter
     }
   });
 };
@@ -34,9 +36,7 @@ export const submitForm = (calendarReducer, filterReducer) => dispatch => {
     return resolve();
   })
     .then(() => {
-      let toCreate = {
-        url: calendarReducer.url
-      };
+      let toCreate = new AionCalendar(calendarReducer.url);
       return createCalendar(toCreate);
     })
     .then(created => {
