@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { FormGroup, TextField, Paper, Typography } from "@material-ui/core";
+import { FormGroup, TextField } from "@material-ui/core";
 import { connect } from "react-redux";
 import { updateCalendarUrl } from "../actions/Actions";
 
@@ -21,29 +21,16 @@ class CalendarForm extends Component {
     this.props.updateCalendarUrl(e.target.value.trim());
   }
 
-  getBody() {
-    return (
-      <div>
-        <FormGroup row>
-          <TextField
-            label="Calendar URL"
-            name="calendarUrl"
-            value={this.props.calendarReducer.url}
-            onChange={this.handleChange}
-          />
-        </FormGroup>
-      </div>
-    );
-  }
-
   render() {
     return (
-      <Paper>
-        <Typography variant="h5" component="h2">
-          Calendar
-        </Typography>
-        {this.getBody()}
-      </Paper>
+      <FormGroup row>
+        <TextField
+          label="Calendar URL"
+          name="calendarUrl"
+          value={this.props.calendarReducer.url}
+          onChange={this.handleChange}
+        />
+      </FormGroup>
     );
   }
 }

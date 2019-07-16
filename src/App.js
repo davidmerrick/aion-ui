@@ -9,7 +9,6 @@ import {
   Paper,
   Link
 } from "@material-ui/core";
-import CalendarForm from "./components/CalendarForm";
 import FilterForm from "./components/FilterForm";
 import { connect } from "react-redux";
 import { CALENDAR_PATH, AION_URL } from "./Config";
@@ -40,9 +39,6 @@ class App extends Component {
         return (
           <Grid container justify="center">
             <Grid item xs={8}>
-              <CalendarForm />
-            </Grid>
-            <Grid item xs={8}>
               <FilterForm />
             </Grid>
           </Grid>
@@ -57,7 +53,7 @@ class App extends Component {
         <AppBar position="static">
           <Toolbar>
             <Typography variant="h4" color="inherit">
-              Aion: iCal filtering service
+              Aion: Calendar filter
             </Typography>
           </Toolbar>
         </AppBar>
