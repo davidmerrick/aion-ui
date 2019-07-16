@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { withStyles } from "@material-ui/core/styles";
-import { submitForm, updatePartstatFilter } from "../actions/Actions";
+import { submitForm, updateRsvpStatuses } from "../actions/Actions";
 import {
   FormGroup,
   Button,
@@ -22,8 +22,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  updatePartstatFilter: partstatFilter =>
-    dispatch(updatePartstatFilter(partstatFilter)),
+  updateRsvpStatuses: rsvpStatuses =>
+    dispatch(updateRsvpStatuses(rsvpStatuses)),
   submitForm: (calendarReducer, filterReducer) =>
     dispatch(submitForm(calendarReducer, filterReducer))
 });
@@ -58,15 +58,15 @@ class FilterForm extends Component {
   }
 
   handleUpdateRsvp(value) {
-    let partstatFilter = this.props.filterReducer.partstatFilter;
+    let rsvpStatuses = this.props.filterReducer.rsvpStatuses;
     let updated;
-    if (partstatFilter.includes(value)) {
-      updated = partstatFilter.filter(item => item !== value);
+    if (rsvpStatuses.includes(value)) {
+      updated = rsvpStatuses.filter(item => item !== value);
     } else {
-      partstatFilter.push(value);
-      updated = partstatFilter;
+      rsvpStatuses.push(value);
+      updated = rsvpStatuses;
     }
-    this.props.updatePartstatFilter(updated);
+    this.props.updateRsvpStatuses(updated);
   }
 
   getBody() {
@@ -82,7 +82,7 @@ class FilterForm extends Component {
             <FormControlLabel
               control={
                 <Checkbox
-                  checked={this.props.filterReducer.partstatFilter.includes(
+                  checked={this.props.filterReducer.rsvpStatuses.includes(
                     item.value
                   )}
                   onChange={() => this.handleUpdateRsvp(item.value)}

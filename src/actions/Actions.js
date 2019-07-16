@@ -22,11 +22,11 @@ export const updateFilterId = value => dispatch => {
 };
 
 // Todo: Perhaps rename this to an "rsvp filter"
-export const updatePartstatFilter = partstatFilter => dispatch => {
+export const updateRsvpStatuses = rsvpStatuses => dispatch => {
   dispatch({
-    type: types.UPDATE_PARTSTAT_FILTER,
+    type: types.UPDATE_RSVP_STATUSES,
     payload: {
-      partstatFilter: partstatFilter
+      rsvpStatuses: rsvpStatuses
     }
   });
 };

@@ -2,7 +2,7 @@ import * as types from "../actions/ActionTypes";
 
 const initialState = {
   summaryInclude: [{ key: 0, label: "foo" }],
-  partstatFilter: []
+  rsvpStatuses: []
 };
 
 const filterReducer = (state = initialState, action) => {
@@ -11,9 +11,9 @@ const filterReducer = (state = initialState, action) => {
       return Object.assign({}, state, {
         summaryInclude: action.payload.summaryInclude
       });
-    case types.UPDATE_PARTSTAT_FILTER:
+    case types.UPDATE_RSVP_STATUSES:
       return Object.assign({}, state, {
-        partstatFilter: action.payload.partstatFilter
+        rsvpStatuses: action.payload.rsvpStatuses
       });
     default:
       return state;
