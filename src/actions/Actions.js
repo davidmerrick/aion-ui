@@ -2,6 +2,7 @@ import * as types from "./ActionTypes";
 import { createCalendar, createFilter } from "../external/aion/AionApi";
 import AionCalendar from "../external/aion/models/AionCalendar";
 import AionFilter from "../external/aion/models/AionFilter";
+import isUrl from "validator/lib/isURL";
 
 export const updateCalendarUrl = newUrl => dispatch => {
   dispatch({
@@ -10,6 +11,20 @@ export const updateCalendarUrl = newUrl => dispatch => {
       url: newUrl
     }
   });
+
+  if (isUrl(newUrl)) {
+    dispatch({
+      type: types.RESET_CALENDAR_VALIDATION_MESSAGE
+    });
+  } else {
+    console.error("Invalid url");
+    dispatch({
+      type: types.UPDATE_CALENDAR_VALIDATION_MESSAGE,
+      payload: {
+        validationMessage: "Invalid URL"
+      }
+    });
+  }
 };
 
 export const updateFilterId = value => dispatch => {
@@ -21,7 +36,6 @@ export const updateFilterId = value => dispatch => {
   });
 };
 
-// Todo: Perhaps rename this to an "rsvp filter"
 export const updateRsvpStatuses = rsvpStatuses => dispatch => {
   dispatch({
     type: types.UPDATE_RSVP_STATUSES,

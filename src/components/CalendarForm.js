@@ -29,6 +29,8 @@ class CalendarForm extends Component {
           name="calendarUrl"
           value={this.props.calendarReducer.url}
           onChange={this.handleChange}
+          error={this.props.calendarReducer.validationMessage != null}
+          helperText={this.props.calendarReducer.validationMessage}
         />
       </FormGroup>
     );

@@ -2,6 +2,7 @@ import * as types from "../actions/ActionTypes";
 
 const initialState = {
   url: "",
+  validationMessage: null,
   isLoading: false
 };
 
@@ -11,6 +12,14 @@ const calendarReducer = (state = initialState, action) => {
     case types.UPDATE_CALENDAR_URL:
       return Object.assign({}, state, {
         url: action.payload.url
+      });
+    case types.RESET_CALENDAR_VALIDATION_MESSAGE:
+      return Object.assign({}, state, {
+        validationMessage: null
+      });
+    case types.UPDATE_CALENDAR_VALIDATION_MESSAGE:
+      return Object.assign({}, state, {
+        validationMessage: action.payload.validationMessage
       });
     case types.UPDATE_AION_CALENDAR_RESOURCE:
       return Object.assign({}, state, {
