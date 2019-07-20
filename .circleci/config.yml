@@ -1,0 +1,15 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:12.6.0
+    working_directory: ~/repo
+    steps:
+      - run: sudo apt-get update
+      - run: sudo apt-get install -y python3 python3-pip
+      - run: pip3 install awscli --upgrade --user
+      - run: yarn install
+      - run: yarn build
+      - deploy:
+          name: Deploy to S3
+          command: yarn deploy
