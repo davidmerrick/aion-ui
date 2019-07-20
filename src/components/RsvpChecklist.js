@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import { withStyles } from "@material-ui/core/styles";
-import { submitForm, updateRsvpStatuses } from "../actions/Actions";
+import { updateRsvpStatuses } from "../actions/Actions";
 import {
   FormGroup,
-  Button,
   FormControlLabel,
   Checkbox,
   Typography
