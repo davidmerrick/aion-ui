@@ -9203,9 +9203,9 @@ serverless-s3-sync@^1.8.0:
     chalk "^2.4.2"
     minimatch "^3.0.4"
 
-serverless@^1.48.2:
-  version "1.48.2"
-  resolved "https://registry.yarnpkg.com/serverless/-/serverless-1.48.2.tgz#d9f51c664731a109adfa83d7af3de741f1d6b767"
+serverless@^1.49.0:
+  version "1.49.0"
+  resolved "https://registry.yarnpkg.com/serverless/-/serverless-1.49.0.tgz#a4c8353c70db6dfe65018bb5e43ea5f44bc43795"
   dependencies:
     "@serverless/cli" "^1.0.1"
     "@serverless/enterprise-plugin" "^1.3.1"
