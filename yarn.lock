@@ -9185,9 +9185,9 @@ serve-static@1.14.1:
     parseurl "~1.3.3"
     send "0.17.1"
 
-serverless-finch@^2.4.2:
-  version "2.4.2"
-  resolved "https://registry.yarnpkg.com/serverless-finch/-/serverless-finch-2.4.2.tgz#0c3ab10a95f713318743b24e9bca2250b3130b85"
+serverless-finch@^2.5.2:
+  version "2.5.2"
+  resolved "https://registry.yarnpkg.com/serverless-finch/-/serverless-finch-2.5.2.tgz#78dd81d20bc3a6b094794f48be88d1f56e1e82c8"
   dependencies:
     is_js "^0.9.0"
     mime "^1.2.11"
